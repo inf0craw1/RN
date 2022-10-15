@@ -1,10 +1,15 @@
 import React from 'react';
 import {Pressable, Text} from 'react-native';
 
-const CustomButton = () => {
+interface Props {
+    text: string;
+    onPress: () => void;
+}
+
+const CustomButton = (props: Props) => {
     return (
-        <Pressable>
-            <Text>Button</Text>
+        <Pressable onPress={props.onPress}>
+            <Text>{props.text || 'button'}</Text>
         </Pressable>
     );
 };
