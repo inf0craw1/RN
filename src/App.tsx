@@ -3,10 +3,15 @@ import {SafeAreaView, View} from 'react-native';
 import CustomButton from './components/CustomButton';
 
 const App = () => {
+
+    const handlePress = () => {
+        console.log('press');
+    }
+
     return (
         <SafeAreaView>
             <View>
-                <CustomButton></CustomButton>
+                <CustomButton text='custom button' onPress={handlePress}></CustomButton>
             </View>
         </SafeAreaView>
     );
