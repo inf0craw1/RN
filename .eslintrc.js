@@ -14,6 +14,7 @@ module.exports = {
         'no-shadow': 'off',
         'no-undef': 'off',
         'no-return-assign': ['error', 'always'],
+        'no-multiple-empty-lines': { 'max': 2, 'maxEOF': 0 },
         'object-curly-spacing': ['warn', 'never'],
         'prettier/prettier': [
           'error',
