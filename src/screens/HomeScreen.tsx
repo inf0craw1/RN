@@ -1,12 +1,20 @@
 import React from "react";
-import { SafeAreaView, Text } from "react-native";
+import { SafeAreaView, Text, View } from "react-native";
+import styled from "styled-components/native";
 
 const HomeScreen = () => {
     return (
         <SafeAreaView>
-            <Text>Home</Text>
+            <StyledView>
+                <Text>asdf</Text>
+            </StyledView>
         </SafeAreaView>
     )
 }
+
+const StyledView = styled.View`
+    flex: 1;
+    background-color: 'black';
+`
 
 export default HomeScreen;
