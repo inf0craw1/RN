@@ -1,29 +1,21 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import CustomButton from './components/CustomButton';
+import { NavigationContainer } from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+import HomeScreen from './screens/HomeScreen';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
 
-    const handlePress = () => {
-        console.log('press');
-    };
-
     return (
-        <SafeAreaView>
-            <View style={styles.view}>
-                <Text>Test</Text>
-                <CustomButton text='custom button' onPress={handlePress}></CustomButton>
-            </View>
-        </SafeAreaView>
+        <NavigationContainer>
+            <Stack.Navigator initialRouteName="Home">
+                <Stack.Screen name="Home" component={HomeScreen}/>
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 };
 
-const styles = StyleSheet.create({
-    view: {
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
-})
 
 export default App;
