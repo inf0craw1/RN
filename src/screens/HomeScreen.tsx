@@ -1,20 +1,27 @@
 import React from "react";
-import { SafeAreaView, Text, View } from "react-native";
-import styled from "styled-components/native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {NavigationStackProp} from 'react-navigation-stack';
+import CustomButton from "../components/CustomButton";
 
-const HomeScreen = () => {
-    return (
-        <SafeAreaView>
-            <StyledView>
-                <Text>asdf</Text>
-            </StyledView>
-        </SafeAreaView>
-    )
+
+
+const HomeScreen = ({navigation}: {navigation: NavigationStackProp}) => {
+
+    const handlePlayPress = () => {
+        navigation.navigate('Game');
+    }
+
+    return (<SafeAreaView style={{ flex: 1 }}>
+        <View style={styles.styledView}>
+            <CustomButton text="Play" onPress={handlePlayPress}></CustomButton>
+        </View>
+    </SafeAreaView>);
 }
 
-const StyledView = styled.View`
-    flex: 1;
-    background-color: 'black';
-`
+const styles = StyleSheet.create({
+    styledView: {
+        flex: 1,
+    }
+})
 
 export default HomeScreen;
