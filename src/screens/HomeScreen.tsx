@@ -11,16 +11,20 @@ const HomeScreen = ({navigation}: {navigation: NavigationStackProp}) => {
         navigation.navigate('Game');
     }
 
-    return (<SafeAreaView style={{ flex: 1 }}>
+    return (
+    <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.styledView}>
             <CustomButton text="Play" onPress={handlePlayPress}></CustomButton>
         </View>
-    </SafeAreaView>);
+    </SafeAreaView>
+    );
 }
 
 const styles = StyleSheet.create({
     styledView: {
         flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 })
 
