@@ -1,3 +1,6 @@
+import React from "react";
+import { StyleSheet, View } from "react-native";
+
 const Bar = () => {
     return (
         <View style={styles.bar}>
@@ -6,10 +9,14 @@ const Bar = () => {
     )
 };
 
-const styels = StyleSheet.create({
+const styles = StyleSheet.create({
     bar: {
-        height: 12,
-        width: ''
+        position: 'absolute',
+
+        width: '100%',
+        height: 16,
+        backgroundColor: '#424ef3'
+
     }
 })
 
