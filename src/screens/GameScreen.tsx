@@ -1,6 +1,7 @@
 import React from "react";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import {NavigationStackProp} from 'react-navigation-stack';
+import Bar from "../components/Bar";
 
 type BarDataType = {
     line: number,
@@ -13,7 +14,7 @@ const GameScreen = ({navigation}: {navigation: NavigationStackProp}) => {
 
     const renderBars = (line: number) => {
         const currentLineBars = barData.filter(e => e.line === line);
-        const res = currentLineBars.map(e => <View style={[styles.bar, { top: e.position }]} />);
+        const res = currentLineBars.map((e, idx) => <Bar key={`Bar-${idx}`} />);
 
         return res;
     }
@@ -45,14 +46,6 @@ const styles = StyleSheet.create({
     line: {
         flex: 1,
     },
-    bar: {
-        position: 'absolute',
-
-        width: '100%',
-        height: 20,
-        backgroundColor: '#424ef3'
-
-    }
     
 })
 
