@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {NavigationStackProp} from 'react-navigation-stack';
 import Bar from '../components/Bar';
@@ -9,6 +9,16 @@ type BarDataType = {
 };
 
 const GameScreen = ({navigation}: {navigation: NavigationStackProp}) => {
+  const [score, setScore] = useState(0);
+
+  const addScore = (additionalScore = 1) => {
+    setScore(prev => prev + additionalScore);
+  };
+
+  useEffect(() => {
+    console.log(score);
+  }, [score]);
+
   const getRandomBarData = (num = 100) => {
     let randomBars: BarDataType[] = [];
     let accDelays = 1000;
@@ -31,7 +41,7 @@ const GameScreen = ({navigation}: {navigation: NavigationStackProp}) => {
   const renderBars = (line: number) => {
     const currentLineBars = barData.filter(e => e.line === line);
     const res = currentLineBars.map((e, idx) => (
-      <Bar key={`Bar-${idx}`} delay={e.delay} />
+      <Bar key={`Bar-${idx}`} delay={e.delay} addScore={addScore} />
     ));
 
     return res;
