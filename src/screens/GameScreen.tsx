@@ -14,12 +14,14 @@ const GameScreen = ({navigation}: {navigation: NavigationStackProp}) => {
     let accDelays = 3000;
 
     for (let i = 0; i < num; i++) {
-      accDelays += Math.floor(Math.random() * 30) * 100;
+      accDelays += Math.floor(Math.random() * 30) * 100 + 1000;
       randomBars.push({
         line: Math.floor(Math.random() * 3) + 1,
         delay: accDelays,
       });
     }
+
+    return randomBars;
   };
 
   const barData = getRandomBarData();
