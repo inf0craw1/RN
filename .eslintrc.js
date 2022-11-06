@@ -7,9 +7,9 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       rules: {
-        quotes: ['error', 'single', {allowTemplateLiterals: true}],
-        indent: ['error', 4],
-        tabWidth: 4,
+        quotes: ['error', 'single', { allowTemplateLiterals: true }],
+        indent: ['error', 2],
+        tabWidth: 2,
         '@typescript-eslint/no-shadow': ['error'],
         'no-shadow': 'off',
         'no-undef': 'off',
@@ -18,7 +18,7 @@ module.exports = {
         'object-curly-spacing': ['warn', 'never'],
         'prettier/prettier': [
           'error',
-          {endOfLine: 'auto', singleQuote: true, parser: 'flow'},
+          { endOfLine: 'auto', singleQuote: true, parser: 'flow' },
         ],
       },
     },
