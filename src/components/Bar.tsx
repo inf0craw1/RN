@@ -9,9 +9,10 @@ import {
 
 type BarProps = {
   delay: number;
+  addScore: (additionalScore: number) => void;
 };
 
-const Bar = ({delay}: BarProps) => {
+const Bar = ({delay, addScore}: BarProps) => {
   const {height} = useWindowDimensions();
   const animatedBarPosition = useRef(new Animated.Value(-100)).current;
 
@@ -19,6 +20,7 @@ const Bar = ({delay}: BarProps) => {
 
   const handleTouchStart = () => {
     console.log('pressed');
+    addScore(1);
     setIsPressed(true);
   };
 
