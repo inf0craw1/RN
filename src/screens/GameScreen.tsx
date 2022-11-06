@@ -11,10 +11,10 @@ type BarDataType = {
 const GameScreen = ({navigation}: {navigation: NavigationStackProp}) => {
   const getRandomBarData = (num = 100) => {
     let randomBars: BarDataType[] = [];
-    let accDelays = 3000;
+    let accDelays = 1000;
 
     for (let i = 0; i < num; i++) {
-      accDelays += Math.floor(Math.random() * 30) * 100 + 1000;
+      accDelays += Math.floor(Math.random() * 20) * 50 + 200;
       randomBars.push({
         line: Math.floor(Math.random() * 3) + 1,
         delay: accDelays,
