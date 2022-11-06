@@ -15,6 +15,10 @@ const GameScreen = ({navigation}: {navigation: NavigationStackProp}) => {
     setScore(prev => prev + additionalScore);
   };
 
+  const subtractScore = (subtractionScore = 15) => {
+    setScore(prev => prev - subtractionScore);
+  };
+
   useEffect(() => {
     console.log(score);
   }, [score]);
@@ -41,7 +45,12 @@ const GameScreen = ({navigation}: {navigation: NavigationStackProp}) => {
   const renderBars = (line: number) => {
     const currentLineBars = barData.filter(e => e.line === line);
     const res = currentLineBars.map((e, idx) => (
-      <Bar key={`Bar-${idx}`} delay={e.delay} addScore={addScore} />
+      <Bar
+        key={`Bar-${idx}`}
+        delay={e.delay}
+        addScore={addScore}
+        subtractScore={subtractScore}
+      />
     ));
 
     return res;
