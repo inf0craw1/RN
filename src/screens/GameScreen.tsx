@@ -19,10 +19,6 @@ const GameScreen = ({navigation}: {navigation: NavigationStackProp}) => {
     setScore(prev => prev - subtractionScore);
   };
 
-  useEffect(() => {
-    console.log(score);
-  }, [score]);
-
   const getRandomBarData = (num = 100) => {
     let randomBars: BarDataType[] = [];
     let accDelays = 1000;
@@ -34,8 +30,6 @@ const GameScreen = ({navigation}: {navigation: NavigationStackProp}) => {
         delay: accDelays,
       });
     }
-
-    console.log(randomBars);
 
     return randomBars;
   };
