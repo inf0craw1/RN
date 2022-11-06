@@ -1,11 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {
-  Animated,
-  Pressable,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from 'react-native';
+import {Animated, StyleSheet, useWindowDimensions, View} from 'react-native';
 
 type BarProps = {
   delay: number;
