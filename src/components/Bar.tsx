@@ -21,7 +21,6 @@ const Bar = ({delay, addScore, subtractScore}: BarProps) => {
   let timeout: any;
 
   const handleTouchStart = () => {
-    console.log('pressed');
     addScore(10);
     setIsPressed(true);
     clearTimeout(timeout);
