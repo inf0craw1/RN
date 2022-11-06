@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   bar: {
     position: 'absolute',
     width: '100%',
-    height: 30,
+    height: 50,
     backgroundColor: '#424ef3',
   },
 });
