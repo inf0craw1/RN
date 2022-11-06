@@ -1,5 +1,10 @@
-import React, {useEffect, useRef} from 'react';
-import {Animated, StyleSheet, useWindowDimensions} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {
+  Animated,
+  Pressable,
+  StyleSheet,
+  useWindowDimensions,
+} from 'react-native';
 
 type BarProps = {
   delay: number;
@@ -7,12 +12,19 @@ type BarProps = {
 
 const Bar = ({delay}: BarProps) => {
   const {height} = useWindowDimensions();
-  const animatedBarPosition = useRef(new Animated.Value(-20)).current;
+  const animatedBarPosition = useRef(new Animated.Value(-100)).current;
+
+  const [isPressed, setIsPressed] = useState(false);
+
+  const handlePress = () => {
+    console.log('pressed');
+    setIsPressed(true);
+  };
 
   useEffect(() => {
     Animated.timing(animatedBarPosition, {
       toValue: height + 20,
-      duration: 5000,
+      duration: 3000,
       delay: delay,
       useNativeDriver: true,
     }).start();
@@ -22,8 +34,11 @@ const Bar = ({delay}: BarProps) => {
     <Animated.View
       style={[
         styles.bar,
+        {backgroundColor: isPressed ? '#8490ff' : '#424ef3'},
         {transform: [{translateY: animatedBarPosition}]},
-      ]}></Animated.View>
+      ]}>
+      <Pressable style={styles.pressable} onPress={handlePress}></Pressable>
+    </Animated.View>
   );
 };
 
@@ -31,8 +46,11 @@ const styles = StyleSheet.create({
   bar: {
     position: 'absolute',
     width: '100%',
-    height: 50,
+    height: 100,
     backgroundColor: '#424ef3',
+  },
+  pressable: {
+    flex: 1,
   },
 });
 
