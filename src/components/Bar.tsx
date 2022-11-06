@@ -10,18 +10,21 @@ import {
 type BarProps = {
   delay: number;
   addScore: (additionalScore: number) => void;
+  subtractScore: (subtractionScore: number) => void;
 };
 
-const Bar = ({delay, addScore}: BarProps) => {
+const Bar = ({delay, addScore, subtractScore}: BarProps) => {
   const {height} = useWindowDimensions();
   const animatedBarPosition = useRef(new Animated.Value(-100)).current;
 
   const [isPressed, setIsPressed] = useState(false);
+  let timeout: any;
 
   const handleTouchStart = () => {
     console.log('pressed');
-    addScore(1);
+    addScore(10);
     setIsPressed(true);
+    clearTimeout(timeout);
   };
 
   useEffect(() => {
@@ -31,6 +34,14 @@ const Bar = ({delay, addScore}: BarProps) => {
       delay: delay,
       useNativeDriver: true,
     }).start();
+
+    timeout = setTimeout(() => {
+      subtractScore(5);
+    }, 3000 + delay);
+
+    return () => {
+      clearTimeout(timeout);
+    };
   }, []);
 
   return (
