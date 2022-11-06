@@ -4,6 +4,7 @@ import {
   Pressable,
   StyleSheet,
   useWindowDimensions,
+  View,
 } from 'react-native';
 
 type BarProps = {
@@ -16,7 +17,7 @@ const Bar = ({delay}: BarProps) => {
 
   const [isPressed, setIsPressed] = useState(false);
 
-  const handlePress = () => {
+  const handleTouchStart = () => {
     console.log('pressed');
     setIsPressed(true);
   };
@@ -37,7 +38,7 @@ const Bar = ({delay}: BarProps) => {
         {backgroundColor: isPressed ? '#8490ff' : '#424ef3'},
         {transform: [{translateY: animatedBarPosition}]},
       ]}>
-      <Pressable style={styles.pressable} onPress={handlePress}></Pressable>
+      <View style={styles.pressable} onTouchStart={handleTouchStart}></View>
     </Animated.View>
   );
 };
