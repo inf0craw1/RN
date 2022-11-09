@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {SafeAreaView, StyleSheet, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {NavigationStackProp} from 'react-navigation-stack';
 import Bar from '../components/Bar';
 
@@ -63,6 +63,9 @@ const GameScreen = ({navigation}: {navigation: NavigationStackProp}) => {
         </View>
         <View style={styles.line}>{renderBars(2)}</View>
       </View>
+      <View style={styles.scoreBoard}>
+        <Text style={styles.scoreText}>Score: {score}</Text>
+      </View>
     </SafeAreaView>
   );
 };
@@ -74,6 +77,15 @@ const styles = StyleSheet.create({
   },
   line: {
     flex: 1,
+  },
+  scoreBoard: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+  },
+  scoreText: {
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 });
 
