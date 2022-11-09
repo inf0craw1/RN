@@ -12,12 +12,10 @@ const Bar = ({delay, addScore, subtractScore}: BarProps) => {
   const animatedBarPosition = useRef(new Animated.Value(-100)).current;
 
   const [isPressed, setIsPressed] = useState(false);
-  let timeout: any;
 
   const handleTouchStart = () => {
     addScore(10);
     setIsPressed(true);
-    clearTimeout(timeout);
   };
 
   useEffect(() => {
@@ -28,7 +26,8 @@ const Bar = ({delay, addScore, subtractScore}: BarProps) => {
       useNativeDriver: true,
     }).start();
 
-    timeout = setTimeout(() => {
+    const timeout = setTimeout(() => {
+      if (isPressed) return;
       subtractScore(5);
     }, 3000 + delay);
 
