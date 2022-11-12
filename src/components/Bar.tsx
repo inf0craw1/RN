@@ -24,16 +24,10 @@ const Bar = ({delay, addScore, subtractScore}: BarProps) => {
       duration: 3000,
       delay: delay,
       useNativeDriver: true,
-    }).start();
-
-    const timeout = setTimeout(() => {
-      if (isPressed) return;
+    }).start(({finished}) => {
+      if (!finished || isPressed) return;
       subtractScore(5);
-    }, 3000 + delay);
-
-    return () => {
-      clearTimeout(timeout);
-    };
+    });
   }, []);
 
   return (
