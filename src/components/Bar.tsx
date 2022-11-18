@@ -11,11 +11,11 @@ const Bar = ({delay, addScore, subtractScore}: BarProps) => {
   const {height} = useWindowDimensions();
   const animatedBarPosition = useRef(new Animated.Value(-100)).current;
 
-  const [isPressed, setIsPressed] = useState(false);
+  const isPressedRef = useRef(false);
 
   const handleTouchStart = () => {
     addScore(10);
-    setIsPressed(true);
+    isPressedRef.current = true;
   };
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const Bar = ({delay, addScore, subtractScore}: BarProps) => {
       delay: delay,
       useNativeDriver: true,
     }).start(({finished}) => {
-      if (!finished || isPressed) return;
+      if (!finished || isPressedRef.current) return;
       subtractScore(5);
     });
   }, []);
@@ -34,7 +34,7 @@ const Bar = ({delay, addScore, subtractScore}: BarProps) => {
     <Animated.View
       style={[
         styles.bar,
-        {backgroundColor: isPressed ? '#8490ff' : '#424ef3'},
+        {backgroundColor: isPressedRef.current ? '#8490ff' : '#424ef3'},
         {transform: [{translateY: animatedBarPosition}]},
       ]}>
       <View style={styles.pressable} onTouchStart={handleTouchStart}></View>
