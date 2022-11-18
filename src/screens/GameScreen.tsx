@@ -26,7 +26,7 @@ const GameScreen = ({navigation}: {navigation: NavigationStackProp}) => {
     for (let i = 0; i < num; i++) {
       accDelays += Math.floor(Math.random() * 20) * 30 + 300;
       randomBars.push({
-        line: Math.floor(Math.random() * 3),
+        line: Math.floor(Math.random() * 4),
         delay: accDelays,
       });
     }
@@ -57,11 +57,22 @@ const GameScreen = ({navigation}: {navigation: NavigationStackProp}) => {
         <View
           style={[
             styles.line,
-            {borderColor: '#000', borderLeftWidth: 1, borderRightWidth: 1},
+            styles.lineBorderLeft,
           ]}>
           {renderBars(1)}
         </View>
-        <View style={styles.line}>{renderBars(2)}</View>
+        <View 
+          style={[
+            styles.line,
+            styles.lineBorderLeft,
+          ]}>{renderBars(2)}
+        </View>
+        <View 
+          style={[
+            styles.line,
+            styles.lineBorderLeft,
+          ]}>{renderBars(3)}
+        </View>
       </View>
       <View style={styles.scoreBoard}>
         <Text style={styles.scoreText}>Score: {score}</Text>
@@ -77,6 +88,10 @@ const styles = StyleSheet.create({
   },
   line: {
     flex: 1,
+  },
+  lineBorderLeft: {
+    borderColor: '#000',
+    borderLeftWidth: 1,
   },
   scoreBoard: {
     position: 'absolute',
