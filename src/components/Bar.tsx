@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Animated, StyleSheet, useWindowDimensions, View} from 'react-native';
+import {Animated, Easing, StyleSheet, useWindowDimensions, View} from 'react-native';
 
 type BarProps = {
   delay: number;
@@ -24,6 +24,7 @@ const Bar = ({delay, addScore, subtractScore}: BarProps) => {
       duration: 3000,
       delay: delay,
       useNativeDriver: true,
+      easing: Easing.linear
     }).start(({finished}) => {
       if (!finished || isPressedRef.current) return;
       subtractScore(5);
