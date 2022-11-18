@@ -11,11 +11,11 @@ type BarDataType = {
 const GameScreen = ({navigation}: {navigation: NavigationStackProp}) => {
   const [score, setScore] = useState(0);
 
-  const addScore = (additionalScore = 1) => {
+  const addScore = (additionalScore = 10) => {
     setScore(prev => prev + additionalScore);
   };
 
-  const subtractScore = (subtractionScore = 15) => {
+  const subtractScore = (subtractionScore = 5) => {
     setScore(prev => prev - subtractionScore);
   };
 
